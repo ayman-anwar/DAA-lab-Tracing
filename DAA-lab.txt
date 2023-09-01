@@ -1,0 +1,232 @@
+Prog-1: Sorting
+
+functions:
+
+def mergesort(array)
+def selectionsort(array,size)
+def quicksort(array,low,high)
+def partition(array,low,high)
+def readinput()
+
+packages:
+
+import time
+from numpy.random import seed
+from numpy.random import randint
+import matplot.lib as pyplot
+
+package functions:
+
+plt.xlabel()
+plt.plot(x axis,y axis,labeldata="")
+plt.grid()
+plt.legend()
+plt.show()
+randint()
+
+
+points:
+
+*recursive functions entry condition
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prog-2: Job scheduling
+
+class:
+
+Job:
+	taskId
+	deadline
+	profit
+
+functions:
+
+def scheduleJobs(jobs,T)
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prog-3: Dijkstra
+
+package:
+
+heapq
+
+functions:
+
+def dijkstra(graph,start)
+def optimal_route(graph,start,destination)
+
+points:
+
+*in dijkstra - find shortest path between source and remaining nodes
+		initialize distances as inifinity for all except start
+		heap=[(0,start)] initially
+		pop curr_dist and curr_node
+		if curr_dist> continue
+		find distances[neighbor]
+		push distances[neighbor]
+		return
+
+*in optimal_route -backtrack from destination to start
+		min_key,next_Node
+		return optimal route
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prog-4 : Prims
+
+package:sys
+
+class: 
+Graph:
+	V
+	graph
+
+	functions:
+	add_edge(u,v,)
+	print_mst(self,parent)
+	prim_mst()
+points:
+*key[],parent[],mst_set[]
+*min_index,min_key
+*mst_set[min_index]=True
+*update key of neighbors and parent
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+Prog -5: Huffman 
+
+class:
+	
+node:
+	freq
+	symbol
+	left
+	right
+	huff
+
+def __lt__(self,nxt):
+   return self.freq < nxt.freq
+
+
+functions:
+
+def printNodes(node,val='')
+def printDecode(node,val='')
+
+points:
+
+*first push all node to nodes
+*while len(nodes)>1: pop left and right 
+*left and right huff values
+*create a newnode(with freq(a+b) and symbol(a+b) left right)
+*push newnode
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prog-6: Knapsack
+
+function:
+
+def knapsack(weights,costs,capacity)
+
+points:
+
+*same as algorithm
+*split() function
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prog-7: optimal drilling
+
+packages:
+
+import networkx as nx
+
+package functions:
+nx.Graph()
+.add_weighted_edges_from()
+nx.approximation.traveing_salesman_problem(G,cycle=True)
+
+function:
+
+def get_distances(num_nodes)
+def tap_optimal_drilling(distances)
+def calculate_optimal_cost(drill_order)
+
+points:
+
+*main function
+*distances[(i,j)]
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prog-8 : Graph coloring
+
+packages:
+
+from collections import defaultdict
+
+package functions:
+
+defaultdict(list)
+
+class:
+
+Graph:
+	subjects
+	graph
+
+	def add_edge(self,sub1,sub2)
+	def graph_coloring(self)
+	def get_min_timeslots(self)
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prog-9 : Nqueens
+
+functions:
+
+def is_safe(board,row,col,N)
+def solve_n_queens_util(board,col,N,solutions)
+def solve_n_queens(N)
+
+points:
+
+* In is_safe() function initialize i and j twice
+* solve_n_queens_util()- first check if col==N -> indicates solution (add to solutions list)
+		       - for i in range(row) start checking if current col is safe - if yes - update board,recursive,backtrack
+*solve_n_queens()- initialize board,solutions,call function, print solutions
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
