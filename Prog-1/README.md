@@ -75,7 +75,18 @@ i) def mergesort(array)
             array[k]=M[j]
             j+=1
           k+=1
-    
+
+* The previous while loop terminates when either L or M is completely added to the array . So these two while loop is to ensure that there is no element remaining to be added . If yes , it will be added . 
+
+        while i<len(L):
+          array[k]=L[i]
+          i+=1
+          k+=1
+
+        while j<len(M):
+          array[k]=M[j]
+          j+=1
+          k+=1
     
   
 
