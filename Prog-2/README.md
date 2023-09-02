@@ -91,7 +91,7 @@ Reference - https://www.javatpoint.com/python-objects-classes
         scheduleJobs(jobs,T)
 
 * This is the main function , similar to void main() in C . The entry point for execution
-* jobs=[] is to initialize a list to which we will add each job
+* jobs=[ ] is to initialize a list to which we will add each job
 * We take the number of jobs as input .
 * Then taskid,deadline,profit for each job .
 * Now we have to store all these values in an object ,i.e, we will call the class Job() and pass these three arguments.
