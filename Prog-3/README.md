@@ -82,11 +82,6 @@
           heapq.heappush(heap, (distance,neighbor))
 <br> ➡️ return distances(shortest distance from source to all nodes)
 
-      def dijkstra(graph,start):
-        distances={node:float('inf') for node in graph}
-        distances[start]=0
-        heap=[(0,start)]
-
         while heap:
           current_dist,current_node=heapq.heappop(heap)
           
@@ -101,4 +96,107 @@
 
         return distances
 
-        
+<h4>def find_optimal_route(graph,start,destination):</h4>
+
+
+     def find_optimal_route(graph,start,destination):
+       distances= dijkstra(graph,start)
+
+       if distances[destination] == float('inf'):
+         return None
+
+       route=[]
+       node=destination
+
+       while node!= start:
+         route.append(node)
+         neighbors=graph[node]
+         min_distance=float('inf')
+         next_node = None
+
+         for neighbor,weight in neighbors.items():
+           if distances[neighbor]+weight == distances[node] and distances[neighbor]<min_distance:
+             min_distance=distances[neighbor]
+             next_node=neighbor
+
+         if next_node is None or next_node in route:
+           return None
+
+         node=next_node
+
+       route.append(start)
+       route.reverse()
+       return route
+
+* This function is to backtrack and find the optimal path .
+* Previous function returns the value of shortest path from source to all vertices, which will be stored in distances.
+* Then we check if there exists a path from source to destination.(if there's no path shortest distance would be infinity), if there's no path return
+  <br>route is a list used to store the optimal path.
+  <br>initialize node as destination .(destination is 'E' in this program) It will backtrack from E to source (A).
+
+       if distances[destination] == float('inf'):
+         return None
+
+       route=[]
+       node=destination
+
+* The while loop will run until the node becomes start(A) , meaning the path is found.
+  <br>We find the route from E to A , so initially it will append E, (then D,B later on)
+  <br>We initialize min_distance and next_node to find the min_distance to find the path and next_node to indicate the next node in the path .
+  <br>Neighbors is used to keep all the neighbors of that current node . (initially neighbors of E)
+  <br> Then we check if the shortest distance of neighbor (from source) + its distance to the node (initially E) is equal to the shortest distance of node (initially E),also we check if its less than min_distance(initially it will be infinity) (this is to make sure that the next node will give you optimal path.
+  <br> If both conditons are met we then update the min_distance and next_node with neighbor (since thats the path).
+  <br> Then we check if next_node is empty or if its already in route (meaning it forms a cycle).if true return None (no optimal path)
+  <br>node is updated with the previously found next_node and the loop runs until the node becomes A.
+  <br> Since it terminates from the loop when its A, A is not added to the route so append(start) .
+  <br> The route we found is in reverse order(E-D-B-A) , so reverse route, then return.
+
+            
+       while node!= start:
+         route.append(node)
+         neighbors=graph[node]
+         min_distance=float('inf')
+         next_node = None
+
+         for neighbor,weight in neighbors.items():
+           if distances[neighbor]+weight == distances[node] and distances[neighbor]<min_distance:
+             min_distance=distances[neighbor]
+             next_node=neighbor
+
+         if next_node is None or next_node in route:
+           return None
+
+         node=next_node
+
+       route.append(start)
+       route.reverse()
+       return route
+
+<h4>Rest code:</h4>
+
+
+     graph = {
+    'A': {'B': 3, 'C': 99, 'D': 7, 'E': 99},
+    'B': {'A': 3, 'C': 4, 'D': 2, 'E': 99},
+    'C': {'A': 99, 'B': 4, 'D': 5, 'E': 6},
+    'D': {'A': 7, 'B': 2, 'C': 5, 'E': 4},
+    'E': {'A': 99, 'B': 99, 'C': 6, 'D': 4}
+     }
+
+     start_location = 'A'
+     destination_location = 'E'
+
+     optimal_route = find_optimal_route(graph, start_location, destination_location)
+
+     if optimal_route is None:
+         print("No valid route exists from the start to the destination.")
+     else:
+         print("Optimal Route:", ' -> '.join(optimal_route))
+
+* Initialize graph , start and destination.
+* Find the optimal path by calling find_optimal_route() function.
+* Print optimal route.
+  <br> Optimal route will be a list containing A,B,D,E so to print in A->B->D->E  format we use
+
+            print("Optimal Route:", ' -> '.join(optimal_route))
+  So it will print one value from optimal route then add "->".
