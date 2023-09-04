@@ -141,12 +141,37 @@
        node=destination
 
 * The while loop will run until the node becomes start(A) , meaning the path is found.
-  <br>We find the route from E to A , so initially it will append E, (then D,B later on)
+
+
+       while node!= start:
+         route.append(node)
+         neighbors=graph[node]
+         min_distance=float('inf')
+         next_node = None
+
+  
+  <br> ➡️ We find the route from E to A , so initially it will append E, (then D,B later on)
   <br>We initialize min_distance and next_node to find the min_distance to find the path and next_node to indicate the next node in the path .
   <br>Neighbors is used to keep all the neighbors of that current node . (initially neighbors of E)
-  <br> Then we check if the shortest distance of neighbor (from source) + its distance to the node (initially E) is equal to the shortest distance of node (initially E),also we check if its less than min_distance(initially it will be infinity) (this is to make sure that the next node will give you optimal path.
+
+       for neighbor,weight in neighbors.items():
+           if distances[neighbor]+weight == distances[node] and distances[neighbor]<min_distance:
+             min_distance=distances[neighbor]
+             next_node=neighbor
+  <br> ➡️ Then we check if the shortest distance of neighbor (from source) + its distance to the node (initially E) is equal to the shortest distance of node (initially E),also we check if its less than min_distance(initially it will be infinity) (this is to make sure that the next node will give you optimal path.
   <br> If both conditons are met we then update the min_distance and next_node with neighbor (since thats the path).
-  <br> Then we check if next_node is empty or if its already in route (meaning it forms a cycle).if true return None (no optimal path)
+
+       if next_node is None or next_node in route:
+           return None
+
+       node=next_node
+
+       route.append(start)
+       route.reverse()
+       return route
+
+
+  <br> ➡️ Then we check if next_node is empty or if its already in route (meaning it forms a cycle).if true return None (no optimal path)
   <br>node is updated with the previously found next_node and the loop runs until the node becomes A.
   <br> Since it terminates from the loop when its A, A is not added to the route so append(start) .
   <br> The route we found is in reverse order(E-D-B-A) , so reverse route, then return.
