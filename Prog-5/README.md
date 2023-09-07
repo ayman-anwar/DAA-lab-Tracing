@@ -39,7 +39,7 @@
           if (not node.left and not node.right):
             print(f"  {node.symbol}  -->  {newVal}")
 * This function is used to print the encoded characters in charcter --> huffman code format.
-* [Click Here](#rest_code)Let's understand the working of the code first then get back to printing values.
+* [Click Here](#rest_code) Let's understand the working of the code first then get back to printing values.
 
 <a name="rest_code"></a>
 <h4>Rest code</h4>
