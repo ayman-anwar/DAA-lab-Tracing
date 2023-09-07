@@ -41,6 +41,20 @@
 * This function is used to print the encoded characters in charcter --> huffman code format.
 * [Click Here](#rest_code) Let's understand the working of the code first then get back to printing values.
 
+<h4>def printDecode(node,val=''):</h4>
+
+          def printDecode(node,val=''):
+            newVal= val+str(node.huff)
+          
+            if(node.left):
+              printDecode(node.left,newVal)
+            if(node.right):
+              printDecode(node.right,newVal)
+            if (not node.left and not node.right):
+              print(f"  {newVal}  -->  {node.symbol}")
+* This function simply prints in Value --> character format 
+  
+
 <a name="rest_code"></a>
 <h4>Rest code</h4>
   
