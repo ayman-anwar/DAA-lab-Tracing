@@ -39,8 +39,8 @@
           if (not node.left and not node.right):
             print(f"  {node.symbol}  -->  {newVal}")
 * This function is used to print the encoded characters in charcter --> huffman code format.
-* [Click Here](#Rest code:)Let's understand the working of the code first then get back to printing values.
+* [Click Here](-Rest-code-)Let's understand the working of the code first then get back to printing values.
 
 
-<h4>Rest code:</h4>
+<h4>Rest code</h4>
   
