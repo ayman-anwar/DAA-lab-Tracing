@@ -42,6 +42,13 @@
             print(f"  {node.symbol}  -->  {newVal}")
 * This function is used to print the encoded characters in charcter --> huffman code format.
 * [Click Here](#rest_code) Let's understand the working of the code first then get back to printing values.
+* This takes two parameter one is node and val . node will contain root intially then we call recursively till we get to each leaf or child. val will be initially empty so val='' . (later when we call recursively we will pass its huff value i.e, 0 or 1 to the next node , so that we get for eg.110,101 etc)
+* Initially node is root, we find newVal to pass when we call the function recursively.
+* <b>Note: We gave huff values as 0 or 1 . so if we add directly it will add mathematically but we want it to just concatenate(1+0=10) so therefore we convert node.huff value to string.</b>
+* We check if there exists a left child, if yes then we call the function recursively passing left child.
+* Similarly check for right child.
+* When there is no left child or right child anymore we print the symbol and its value .
+* <b>Note: We use if condition multiple times to call recursively not if else . if else wont throw error but will give you wrong result.</b>
 
 <h4>def printDecode(node,val=''):</h4>
 
@@ -54,7 +61,8 @@
               printDecode(node.right,newVal)
             if (not node.left and not node.right):
               print(f"  {newVal}  -->  {node.symbol}")
-* This function simply prints in Value --> character format 
+* This function simply prints in Value --> character format
+* Works same as encoding part. 
   
 <hr>
 <a name="rest_code"></a>
